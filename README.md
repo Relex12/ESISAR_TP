@@ -1,2 +1,2 @@
-# CS351
-TPs de CS351
+# TP_ESISAR
+TPs d'informatique à l'ESISAR
