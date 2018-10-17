@@ -1,6 +1,6 @@
-#include <stdio.h>
+# include "math_lib.h"
 
-int pgcd (a, b) {
+int pgcd (int a, int b) {
 
 	if (b == 0) return (a);
 	int r;
@@ -9,15 +9,13 @@ int pgcd (a, b) {
 		a = b;
 		b = r;	
 #ifdef MISEAUPOINT
-		printf ("Ici : b = %d \n", b);
+		printf ("Ici : b = %d \n", b);	
 #endif
 	}
-	
 	return (a);
-
 }
 
-#ifndef LIBRAIRY 		// utilisé pour l'exercice 3
+#ifndef LIBRARY 		// utilisé pour l'exercice 3
 int main() {
 	int a = 0;
 	int b = 0;

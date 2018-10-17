@@ -32,6 +32,7 @@ int reste (int a, int b)
 	return (a);
 }
 
+
 int valeurAbsolue (int a)
 {
 	if (a >= 0) 	return (a);

@@ -2,7 +2,7 @@
 
 #define MAX 5
 
-int jeuMulti(n) {
+int jeuMulti(int n) {
 	int i = 0;
 	int ans = 0;
 	while ( (ans == (n*i) ) && (i < MAX) ) {
@@ -10,14 +10,14 @@ int jeuMulti(n) {
 		printf ("%d x %d =\t", i, n);
 		scanf ("%d", &ans);
 	}
-	if (i == 12) printf ("Bravo, tu as gagne\n");
+	if (i == MAX) printf ("Bravo, tu as gagne\n");
 	else printf ("Perdu, le resultat est %d\n", (n*i));
 
 	return (0);
 }
 
 
-int jeuMultiPoints(n) {
+int jeuMultiPoints(int n) {
 	int i = 0;
 	int ans = 0;
 	int nb_err = 0;
