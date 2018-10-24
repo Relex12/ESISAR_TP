@@ -1,10 +1,10 @@
 all : 
-	echo "precisez tri ou incr ou clean"
+	echo "precisez liste ou clean"
 
 clean :
-	rm tri incr
+	rm liste
 
-tri : trihollandais.c
+liste : liste.c
 	gcc -Wall $< -o $@
 
 incr : incr.c
