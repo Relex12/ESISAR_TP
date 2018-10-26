@@ -79,7 +79,7 @@ int main (){
 	scanf("%d/%d %d/%d", &fa.num, &fa.den, &fb.num, &fb.den);
 	printf("Entrer une opération (+, -, /, *) : \t"); 					// demander à Lorine
 	scanf("%c", &op);
-	if (op == '+')	addFraction (fa, fb);
+	if (op == '+')		addFraction (fa, fb);
 	else if (op == '-')	subFraction (fa, fb);
 	else if (op == '*')	mulFraction (fa, fb);
 	else if (op == '/')	divFraction (fa, fb);
