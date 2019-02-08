@@ -25,7 +25,7 @@ int fonctionDeMerde(int n)
     }
     else if (pid == 0)
     {
-      printf("je suis un fils %d, mon ID est %d\n", (NBFILS - n + 1), getpid());
+      printf("je suis un fils %d, mon ID est %d\n", (n + 1), getpid());
       exit (0);
     }
     else
@@ -40,6 +40,6 @@ int fonctionDeMerde(int n)
 
 int main(int argc, char const *argv[])
 {
-  fonctionDeMerde(NBFILS);
+  fonctionDeMerde(atoi (argv[1]));
   return 0;
 }
