@@ -1,0 +1,267 @@
+Compte rendu du DM1 de CS321 - Java
+
+Ce compte rendu fait doublon avec le PDF joint, mais c'est ce fichier txt qui est le plus mis-à-jour.
+
+1.	Le Chronomètre
+1.1	Voici les signatures des chronos que nous avons défini
+
+public class chrono1
+{
+	private int secondes ;
+	private int minutes ;
+	private int heures ;
+	public void chrono ()
+	public void afficher ()
+	public void rebours ()
+	public int getSecondes ()
+	public int getMinutes ()
+	public int getHeures ()
+	public void setSecondes ( int sec )
+	public void setMinutes ( int min )
+	public void setHeures ( int heu )
+}
+
+public class chrono2
+{
+	private int nbSecondes ;
+	public void chrono ()
+	public void afficher ()
+	public void rebours ()
+	public int getSecondes ()
+	public int getMinutes ()
+	public int getHeures ()
+	public void setSecondes ( int sec )
+	public void setMinutes ( int min )
+	public void setHeures ( int heu )
+}
+
+1.2	Voici nos constructeurs
+Chrono 1
+
+public void chrono ()
+{
+	secondes = 0;
+	minutes = 0;
+	heures = 0;
+}
+
+Chrono 2
+
+public void chrono ()
+{
+	nbSecondes = 0;
+}
+
+1.3	Voici nos méthodes retours()
+
+Afin d’éviter un nombre de secondes négatif, il suffit de rajouter une condition si le compteur est à 0
+
+Chrono 1
+
+public void rebours ()
+{
+	if ( secondes > 0) secondes = secondes - 1;
+	else if ( minutes > 0)
+	{
+		minutes = minutes - 1;
+		secondes = 59;
+	}
+	else if ( heures > 0)
+	{
+		heures = heures - 1;
+		minutes = 59;
+		secondes = 59;
+	}
+	else System . out . println ( " Impossible d ’ enlever une seconde " ) ;
+}
+
+Chrono 2
+
+public void rebours ()
+{
+	if ( nbSecondes > 0) nbSecondes = nbSecondes - 1;
+	else System . out . println ( " Impossible d ’ enlever une seconde " ) ;
+}
+
+1.4	Il nous semble que la meilleure implémentation dépend de l’utilisation
+
+Le chrono 1 est moins efficace pour enlever des secondes (plus d’instructions) mais est plus efficace pour afficher et modifier les valeurs du chrono.
+Le chrono 2 est donc plus efficace pour compter à rebours, et moins efficace pour afficher et modifier les valeurs.
+
+1.5	Exécutez la commande ”make time” et laissez la magie opérer.
+
+2	Arithmétique rationnelle exacte en Java
+
+2.1	Approximations : oui et non
+
+Oui car il n’y a pas d’approximation sur les nombres entier, et non pour les nombres réels.
+
+2.2
+
+-----------------------------------------
+|		Fraction		|
+|					|
+|---------------------------------------|
+| - numerateur : int			|
+| - denominateur : int			|
+|					|
+|---------------------------------------|
+| + getNumerateur() : int		|
+| + getDenominateur() : int		|
+| + setNumerateur(i : int) : void	|
+| + setDenominateur(i : int) : void	|
+| + add(x : int) : void			|
+| + sub(x : int) : void			|
+| + mult(x : int) : void		|
+| + réduire( : void ) : void		|
+| + addFraction(x : fraction) : void	|
+| + multFraction(x : fraction) : void	|
+|					|
+-----------------------------------------
+
+32.3
+
+public class fraction
+{
+
+//      ATTRIBUTS
+    private int numerateur;
+
+    private int denominateur;
+
+//      CONSTRUCTEUR
+    public void fraction (int a, int b)
+    {
+        numerateur = a;
+        denominateur = b;
+    }
+
+//      METHODES
+    public void afficher()
+    {
+        System.out.println(numerateur + " / " + denominateur);
+    }
+
+    public void add (int x)
+    {
+        numerateur = numerateur + x * denominateur;
+    }
+
+    public void sub (int x)
+    {
+        numerateur = numerateur - x * denominateur;
+    }
+
+    public void mult (int x)
+    {
+        numerateur = numerateur * x;
+    }
+
+    private int pgcd (int a, int b)
+    {
+        while (( a * b ) != 0)
+        {
+            if (a > b )     a = a-b;
+            else            b = b-a;
+        }
+        if (a == 0)    return b ;
+        else        return a ;
+    }
+
+    public void reduire ()
+    {
+        int diviseur = pgcd (numerateur, denominateur);
+        denominateur = denominateur / diviseur;
+        numerateur = numerateur / diviseur;
+    }
+
+    public void addFraction (fraction f)
+    {
+        numerateur = numerateur * f.getDenominateur()+ f.getNumerateur() * denominateur;
+        denominateur = denominateur * f.getDenominateur();
+    }
+
+    public void multFraction (fraction f)
+    {
+        numerateur = numerateur * f.getNumerateur();
+        denominateur = denominateur * f.getDenominateur();
+    }
+
+    public int getNumerateur ()
+    {
+        return numerateur;
+    }
+
+    public int getDenominateur ()
+    {
+        return denominateur;
+    }
+
+    public void setNumerateur (int num)
+    {
+        numerateur = num;
+    }
+
+    public void setDenominateur (int den)
+    {
+        denominateur = den;
+    }
+}
+
+2.4 	on utilisera : (voir code source pour plus d'informations en commentaire)
+
+public class division
+{
+    public static void main(String[] args) {
+        System.out.println("TESTS DE L'EXACTITUDE DES OPERATIONS");
+        System.out.println("int   : 6 / 5 = "+ (int)(6/5));
+        System.out.println("float : 6 / 5 = "+ (float)(6/5));
+
+        System.out.println("TESTS DE LA CLASSE FRACTION");
+        System.out.println("resolution de (123/456+789/10 +11)*12 ");
+
+        fraction f1 = new fraction();
+        fraction f2 = new fraction();
+        f1.setNumerateur(123);
+        f1.setDenominateur(456);
+        f2.setNumerateur(789);
+        f2.setDenominateur(10);
+
+        f1.addFraction(f2);
+        System.out.println("addition de f2 à f1");
+        f1.afficher();
+
+        f1.add(11);
+        System.out.println("addition de 11 à f1");
+        f1.afficher();
+
+        f1.mult(12);
+        System.out.println("multiplication de f1 par 12");
+        f1.afficher();
+
+        f1.reduire();
+        System.out.println("réduction de f1");
+        f1.afficher();
+
+    }
+}
+
+2.5
+
+private int pgcd (int a, int b)
+{
+    while (( a * b ) != 0)
+    {
+	if (a > b )     a = a-b;
+	else            b = b-a;
+    }
+    if (a == 0)    return b ;
+    else        return a ;
+}
+
+public void reduire ()
+{
+    int diviseur = pgcd (numerateur, denominateur);
+    denominateur = denominateur / diviseur;
+    numerateur = numerateur / diviseur;
+}
