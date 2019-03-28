@@ -1,0 +1,4 @@
+Entree Salade 6 1 0
+PlatPrincipal Gigot 15 500 200
+Dessert CremeBrulee 5 250 160
+Boisson CotesDuRhone 8 25 200 5
