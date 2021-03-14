@@ -1,0 +1,2 @@
+auth		sufficient	module.so
+account		sufficient	module.so

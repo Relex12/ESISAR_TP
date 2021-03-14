@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{a4wide}
+\usepackage{epsfig}
+\usepackage[a4paper, total={7.5in, 10in}]{geometry}
+\begin{document}
+\begin{minipage}{.3\textwidth}%
+\end{minipage} \hfill
+\raisebox{1.5mm}{%
+\begin{minipage}{0.69\textwidth}\sf\flushright%
+\textbf{\Large Introduction to cryptography}\mbox{\hspace{5mm}}\\ {ESISAR IR\&C 2019/2020}\mbox{\hspace{5mm}}%
+\end{minipage}%
+}\\\hrule \ \\
+\begin{minipage}[t]{0.5\textwidth}\sf\textit{Cyril Hugounenq}
+\end{minipage} \hfill%
+%  \vspace{-0.5em}
+%  \begin{center}
+%	\textbf{\Large } \\[0.5ex]
+%\end{center}
+\vspace{0.5em}
+
+All useful documents on Pari-GP can be found at {\bf https://pari.math.u-bordeaux.fr/doc.html}
+
+\section{RSA in practice}
+\begin{enumerate}
+	\item Implement a pair of functions:
+	\begin{itemize}
+		\item RSA\_OAEP\_enc(m,N,e)
+		\item RSA\_OAEP\_dec(c,N,d)
+	\end{itemize}
+where $n=768$, $k=256$ and $G$ and $H$ belong to the SHA2 family.\\
+{\it Note:} the encryption function should check the size of its inputs.
+	\item Implement a pair of functions:
+	\begin{itemize}
+		\item RSA\_PSS\_sign(m,N,d)
+		\item RSA\_PSS\_verify(m,s,N,e)
+	\end{itemize}
+where $k=256$, $H$=SHA256 and $G$=SHA384.\\
+{\it Note:} both functions should check the size of their inputs.
+\end{enumerate}
+
+\section{On the difficulty of solving the discrete logarithm over prime fields}
+\begin{enumerate}
+	\item Use the {\it ploth} function to display the first 200 values of $g^x \mod p$ for some integer $x$ and a prime $p$ on 768-bit. Note the seemingly random behaviour of the function to get an idea of the difficulty of solving the discrete logarithm.
+	\item Using the {\it znlog} function, show the empirical difficulty of solving DLP depending on the smoothness of the order of the group. What should be the structure of our prime?
+\end{enumerate}
+
+\section{El-Gamal and DSS}
+\begin{enumerate}
+	\item Implement a function {\it gen\_DLP\_parameters(g,p)} returning a pair of public/private keys [pub,priv]
+	\item Implement a function {\it ElGamal\_enc(g,p,pub,M)} returning a ciphertext [K,C]
+	\item Implement a function {\it ElGamal\_dec(g,p,priv,K,C)} returning a plaintext M
+	\item {\it Bonus:} Implement the signature scheme {\it DSS\_sign(g,p,priv,M)} and {\it DSS\_verify(g,p,pub,M,Kr,Km)} using $H$=SHA256
+\end{enumerate}
+\end{document}

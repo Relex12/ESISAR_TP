@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+%\usepackage{a4wide}
+\usepackage{epsfig}
+\usepackage[a4paper, total={7.5in, 10in}]{geometry}
+\begin{document}
+\begin{minipage}{.3\textwidth}%
+\end{minipage} \hfill
+\raisebox{1.5mm}{%
+\begin{minipage}{0.69\textwidth}\sf\flushright%
+\textbf{\Large Introduction to cryptography}\mbox{\hspace{5mm}}\\ {ESISAR IR\&C 2020/2021}\mbox{\hspace{5mm}}%
+\end{minipage}%
+}\\\hrule \ \\
+\begin{minipage}[t]{0.5\textwidth}\sf\textit{Hugounenq Cyril}
+\end{minipage} \hfill%
+%  \vspace{-0.5em}
+%  \begin{center}
+%	\textbf{\Large } \\[0.5ex]
+%\end{center}
+\vspace{0.5em}
+
+All useful documents on Pari-GP can be found at  {\bf \url{https://pari.math.u-bordeaux.fr/doc.html}}
+
+\section{Getting familiar with Pari-GP: Generating primes}
+\begin{enumerate}
+	\item Start Pari-GP with the command {\it \bf gp} and import file {\it rsa.gp} by entering {\it read(rsa)} or {\it \textbackslash r rsa.gp}
+	\item Use {\it gen\_prime} to generate a prime number on 512 bits. Using the User's guide, explain why the generation is so fast.
+	\item Is it secure to use such a function to generate a long term RSA key? Modify the existing code if necessary.
+	\item In practice, NIST recommends stronger assumptions on primes used for RSA
+	\begin{itemize}
+		\item {\bf Strong prime:} $p$ is a strong prime iff $\frac{p-1}{2}$ is also prime
+		\item {\bf RSA prime:} $p$ is a RSA prime iff $\frac{p-1}{2}$ is a strong prime
+		\item Implement a function {\it gen\_RSA\_prime(b)} which generates a RSA prime on exactly $b$ bits
+	\end{itemize}
+	\item {\it Bonus:} Implement a function counting the number of primes lower than a bound $m$ and check empirically that this number is close to $\frac{m}{log(m)}$
+\end{enumerate}
+
+\section{Generating RSA parameters}
+\begin{enumerate}
+	\item Implement a function {\it gen\_RSA\_parameters(b)} which generates a set of RSA parameters on $b$-bits and returns $[N,e,d]$.
+	\item Implement a function {\it RSA\_encrypt(M,N,e)} which encrypts a message $M$ using a public key $[N,e]$
+	\item Implement a function {\it RSA\_decrypt(C,N,d)} which decrypts a message $C$ using a private key $[N,d]$
+	\item {\it Bonus:} Using the gp function {\it chinese}, implement a function {\it RSA\_sign\_CRT(M,N,$d_p$,$d_q$,p,q)} which signs a message $M$ using a private key $[N,d \mod p-1, d \mod q-1,p,q]$ (modify the function {\it RSA\_gen\_parameters} accordingly). The signature value shall be $S=M^d [N]$.
+\end{enumerate}
+
+\section{Attacks on RSA}
+\begin{enumerate}
+	\item Implement a function {\it factor\_from\_phi(N,phi)} which factors $N$ given $\varphi(N)$.
+	\item Implement a function {\it factor\_from\_d(N,e,d)} which factors $N$ given $e$ and $d$.
+	\item Implement a function {\it broacast\_attack($M^3 \mod N_a,N_a,M^3 \mod N_b,N_b,M^3 \mod N_c,N_c$)} which recovers $M$.
+	\item Implement a function {\it wiener\_attack(N,e)} which recovers $d$ assuming that $d < \frac{1}{3}N^{\frac{1}{4}}$.
+\end{enumerate}
+
+\end{document}
