@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{a4wide}
+\usepackage{epsfig}
+\usepackage[a4paper, total={7.5in, 10in}]{geometry}
+\begin{document}
+\begin{minipage}{.3\textwidth}%
+\end{minipage} \hfill
+\raisebox{1.5mm}{%
+\begin{minipage}{0.69\textwidth}\sf\flushright%
+\textbf{\Large Introduction to cryptography}\mbox{\hspace{5mm}}\\ {ESISAR IR\&C 2019/2020}\mbox{\hspace{5mm}}%
+\end{minipage}%
+}\\\hrule \ \\
+\begin{minipage}[t]{0.5\textwidth}\sf\textit{Cyril Hugounenq}
+\end{minipage} \hfill%
+%  \vspace{-0.5em}
+%  \begin{center}
+%	\textbf{\Large } \\[0.5ex]
+%\end{center}
+\vspace{0.5em}
+
+\section{Playing with ECC}
+\begin{enumerate}
+	\item Init a prime number $p=randomprime(2^{100})$ and the elliptic curve $E:y^2=x^3+2x+3$ over $\mathbb{Z}/p\mathbb{Z}$ using the function $ellinit$
+	\item Draw a random point on the curve $P=random(E)$ and check that $P$ is indeed on the curve using two methods
+	\item Draw a second point $Q$ on the curve and check that $R=P+Q$ is also on the curve
+	\item Using the functions $ellcard$ and $ellorder$, check that the order of $P$ divides the cardinal of $E(F_p)$
+	\item Using the function $ellmul$, check that $ellorder$ returns the order of a point.
+	\item Can $E(F_p)$ admit points of 2-torsion? Of 3-torsion?
+	\item Use the function $ellgenerators(E)$ to generate a point $G$. What is the order of $G$?
+	\item {\it Bonus:} For a fixed value of $p$ prime and using $ellcard$, check empirically Hasse theorem on multiple curves. What is the empirical distribution of cardinals?
+\end{enumerate}
+
+\section{ECDSA}
+\begin{enumerate}
+	\item Using the notations given in the course, implement the functions $ECDSA-SHA256-sign(E,G,n,d_a,M)$ and $ECDSA-SHA256-verify(E,G,n,Q_a,M,s,x_r)$
+\end{enumerate}
+
+\section{Rho-Pollard on ECC}
+\begin{enumerate}
+	\item Let $E$ be an elliptic curve, $G$ a point on $E$, and $P=aG$ for some unknown $a$. Write the function $rho-pollard-ECC(E,G,P)$ implementing the following algorithm
+	\begin{itemize}
+		\item For a point $Q=(x,y)$ on $E$, we define
+		\[ f(Q) =
+			\left\{
+				\begin{array}{lll}
+					Q + P&if & x \text{ mod } 3 = 0 \\
+					2Q   &if & x \text{ mod } 3 = 1 \\
+					Q + G&if & x \text{ mod } 3 = 2 \\
+				\end{array}
+			\right.
+		\]
+		\item We define the sequences
+		\[
+			\begin{array}{ll}
+				R_0=P,& R_{i+1}=f(R_i) \\
+				S_0=P,& S_{i+1}=f(f(S_i)) \\
+			\end{array}
+		\]
+		\item If $R_i = a_iP + b_iG$, what is the value of $a_{i+1}$ and $b_{i+1}$?
+		\item Compute the sequences $R_i$ and $S_i$ until $R_i=S_i$.
+		\item Return $a$.
+	\end{itemize}
+	\item What is the empirical complexity of this attack with respect to the order of $G$?
+\end{enumerate}
+
+\end{document}
