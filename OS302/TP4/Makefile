@@ -1,3 +1,9 @@
+all :
+	echo "pr�cisez exo1 ou main"
+
+exo1 : exo1.c
+	gcc -Wall exo1.c -o exo1
+
 main : main.c client.o server.o calcul.h
 	gcc $^ -o main #-Wall
 

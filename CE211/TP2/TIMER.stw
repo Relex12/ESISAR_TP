@@ -1,0 +1,20 @@
+;	STMicroelectronics Workspace file
+
+[Version]
+Keyword=ST7Workspace-V0.7
+
+[Project0]
+Filename=timer3.stp
+Dependencies=
+
+[Project1]
+Filename=chenillard.stp
+Dependencies=
+
+[Project2]
+Filename=mesure.stp
+Dependencies=
+[Options]
+ActiveProject=mesure
+ActiveConfig=Debug
+AddSortedElements=1

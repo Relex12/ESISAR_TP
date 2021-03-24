@@ -1,0 +1,20 @@
+;	STMicroelectronics Workspace file
+
+[Version]
+Keyword=ST7Workspace-V0.7
+
+[Project0]
+Filename=exo1.stp
+Dependencies=
+
+[Project1]
+Filename=exo2.stp
+Dependencies=
+
+[Project2]
+Filename=exo3.stp
+Dependencies=
+[Options]
+ActiveProject=exo3
+ActiveConfig=Debug
+AddSortedElements=1

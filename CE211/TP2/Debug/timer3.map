@@ -1,0 +1,216 @@
+
+Map of Debug\timer3.sm8 from link file Debug\timer3.lkf - Wed Dec 20 15:33:58 2017
+
+
+                               --------
+                               Segments
+                               --------
+
+start 00008080 end 00008080 length     0 segment .const
+start 00008083 end 0000855f length  1244 segment .text
+start 00004000 end 00004000 length     0 segment .eeprom
+start 00000000 end 00000000 length     0 segment .bsct
+start 00000000 end 00000006 length     6 segment .ubsct
+start 00000006 end 00000006 length     0 segment .bit
+start 00000006 end 00000006 length     0 segment .share
+start 00000100 end 00000100 length     0 segment .data
+start 00000100 end 00000100 length     0 segment .bss
+start 00000000 end 0000022a length   554 segment .info.
+start 00000000 end 00000f66 length  3942 segment .debug
+start 00008000 end 00008080 length   128 segment .const
+start 00008080 end 00008083 length     3 segment .init
+
+
+                               -------
+                               Modules
+                               -------
+
+C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8:
+start 00008083 end 000080ce length    75 section .text
+start 00000100 end 00000100 length     0 section .bss
+start 00000000 end 00000000 length     0 section .ubsct
+start 00000000 end 00000030 length    48 section .info.
+
+Debug\exo1.o:
+start 000080ce end 00008126 length    88 section .text
+start 00000000 end 000000e8 length   232 section .debug
+start 00000030 end 0000009d length   109 section .info.
+
+Debug\fonctions_tp_utiles.o:
+start 00008126 end 0000855e length  1080 section .text
+start 000000e8 end 00000dfb length  3347 section .debug
+start 0000009d end 00000119 length   124 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)xreg.o:
+start 00000000 end 00000003 length     3 section .ubsct
+start 00000119 end 00000148 length    47 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)yreg.o:
+start 00000003 end 00000006 length     3 section .ubsct
+start 00000148 end 00000177 length    47 section .info.
+
+Debug\stm8_interrupt_vector.o:
+start 0000855e end 0000855f length     1 section .text
+start 00000dfb end 00000f66 length   363 section .debug
+start 00000177 end 000001f5 length   126 section .info.
+start 00008000 end 00008080 length   128 section .const
+
+
+                             -----------
+                             Stack usage
+                             -----------
+
+Debug\exo1.o:
+_main                                  >    7   (4)
+
+Debug\fonctions_tp_utiles.o:
+_Ajustement_BCD                            10   (10)
+_Bin_BCD                               >   24   (14)
+_afficher_Digit_HDLX1                       4   (4)
+_afficher_Digit_HDLX2                       4   (4)
+_afficher_Module_HDLX1                      9   (5)
+_afficher_Module_HDLX2                      9   (5)
+_afficher_Modules_HDLX                 >   13   (4)
+_afficher_TIL321                            3   (3)
+_conv1_BCD_ASCII                       >   10   (10)
+_conv_BCD_ASCII                        >    8   (8)
+_conv_Bin_ASCII                        >    8   (8)
+_ecrire_Registre_Controle_Digit_HDLX1       2   (2)
+_ecrire_Registre_Controle_Digit_HDLX2       2   (2)
+_init_Ports                                 2   (2)
+_init_Timer2_PWM_canal1                >    2   (2)
+_init_Timer2_PWM_canal2_10ms           >    2   (2)
+_init_Timer2_PWM_canal2_1s             >    2   (2)
+_init_Timer2_PWM_canal2_6ms            >    2   (2)
+_init_Timer3_PWM_canal2                >    2   (2)
+_lire_Etat_BP1                         >    3   (3)
+_lire_Etat_BP2                         >    3   (3)
+_piloter_Clignotement_HDLX1            >    8   (6)
+_piloter_Clignotement_HDLX2            >    8   (6)
+
+Debug\stm8_interrupt_vector.o:
+f_NonHandledInterrupt                  >    6   (6)
+
+Stack size: 30
+
+
+                              ---------
+                              Call tree
+                              ---------
+   1 > _Bin_BCD: (14)
+   2      + _Ajustement_BCD: (10)
+       
+   3 > __stext: (0)
+
+   4 > _afficher_Modules_HDLX: (4)
+   5      + _afficher_Module_HDLX1: (5)
+   6      |    + _afficher_Digit_HDLX1: (4)
+          | 
+   7      + _afficher_Module_HDLX2: (5)
+   8      |    + _afficher_Digit_HDLX2: (4)
+          | 
+       
+   9 > _conv1_BCD_ASCII: (10)
+
+  10 > _conv_BCD_ASCII: (8)
+
+  11 > _conv_Bin_ASCII: (8)
+
+  12 > _init_Timer2_PWM_canal1: (2)
+
+  13 > _init_Timer2_PWM_canal2_10ms: (2)
+
+  14 > _init_Timer2_PWM_canal2_1s: (2)
+
+  15 > _init_Timer2_PWM_canal2_6ms: (2)
+
+  16 > _init_Timer3_PWM_canal2: (2)
+
+  17 > _lire_Etat_BP1: (3)
+
+  18 > _lire_Etat_BP2: (3)
+
+  19 > _main: (4)
+  20      + _afficher_TIL321: (3)
+  21      + _init_Ports: (2)
+       
+  22 > _piloter_Clignotement_HDLX1: (6)
+  23      + _ecrire_Registre_Controle_Digit_HDLX1: (2)
+       
+  24 > _piloter_Clignotement_HDLX2: (6)
+  25      + _ecrire_Registre_Controle_Digit_HDLX2: (2)
+       
+  26 > f_NonHandledInterrupt: (6)
+
+  27   _Ajustement_BCD --> 2
+
+  28   _afficher_Digit_HDLX1 --> 6
+
+  29   _afficher_Digit_HDLX2 --> 8
+
+  30   _afficher_Module_HDLX1 --> 5
+
+  31   _afficher_Module_HDLX2 --> 7
+
+  32   _afficher_TIL321 --> 20
+
+  33   _ecrire_Registre_Controle_Digit_HDLX1 --> 23
+
+  34   _ecrire_Registre_Controle_Digit_HDLX2 --> 25
+
+  35   _init_Ports --> 21
+
+
+
+                               -------
+                               Symbols
+                               -------
+
+_Ajustement_BCD                         000084bd   defined in Debug\fonctions_tp_utiles.o section .text
+_Bin_BCD                                00008506   defined in Debug\fonctions_tp_utiles.o section .text
+__endmem                                000005ff   defined in command file
+                                                   *** not used ***
+__endzp                                 00000006   defined in command file section .ubsct
+                                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8
+__idesc__                               00008080   defined in linker section .init
+                                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8
+__memory                                00000100   defined in command file section .bss
+                                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8
+__stack                                 000007ff   defined in command file
+                                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8
+__startmem                              00000100   defined in command file section .bss
+                                                   *** not used ***
+__stext                                 00008083   defined in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8 section .text
+                                                   used in Debug\stm8_interrupt_vector.o
+__vectab                                00008000   defined in Debug\stm8_interrupt_vector.o section .const
+_afficher_Digit_HDLX1                   00008204   defined in Debug\fonctions_tp_utiles.o section .text
+_afficher_Digit_HDLX2                   0000821a   defined in Debug\fonctions_tp_utiles.o section .text
+_afficher_Module_HDLX1                  00008276   defined in Debug\fonctions_tp_utiles.o section .text
+_afficher_Module_HDLX2                  00008252   defined in Debug\fonctions_tp_utiles.o section .text
+_afficher_Modules_HDLX                  0000829b   defined in Debug\fonctions_tp_utiles.o section .text
+_afficher_TIL321                        00008195   defined in Debug\fonctions_tp_utiles.o section .text
+                                                   used in Debug\exo1.o
+_conv1_BCD_ASCII                        0000844e   defined in Debug\fonctions_tp_utiles.o section .text
+_conv_BCD_ASCII                         000083b6   defined in Debug\fonctions_tp_utiles.o section .text
+_conv_Bin_ASCII                         000083f6   defined in Debug\fonctions_tp_utiles.o section .text
+_ecrire_Registre_Controle_Digit_HDLX1   00008230   defined in Debug\fonctions_tp_utiles.o section .text
+_ecrire_Registre_Controle_Digit_HDLX2   00008241   defined in Debug\fonctions_tp_utiles.o section .text
+_exit                                   000080cc   defined in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8 section .text
+_init_Ports                             00008126   defined in Debug\fonctions_tp_utiles.o section .text
+                                                   used in Debug\exo1.o
+_init_Timer2_PWM_canal1                 0000831e   defined in Debug\fonctions_tp_utiles.o section .text
+_init_Timer2_PWM_canal2_10ms            0000833f   defined in Debug\fonctions_tp_utiles.o section .text
+_init_Timer2_PWM_canal2_1s              00008391   defined in Debug\fonctions_tp_utiles.o section .text
+_init_Timer2_PWM_canal2_6ms             00008368   defined in Debug\fonctions_tp_utiles.o section .text
+_init_Timer3_PWM_canal2                 000082f9   defined in Debug\fonctions_tp_utiles.o section .text
+_lire_Etat_BP1                          00008180   defined in Debug\fonctions_tp_utiles.o section .text
+_lire_Etat_BP2                          0000816b   defined in Debug\fonctions_tp_utiles.o section .text
+_main                                   000080ce   defined in Debug\exo1.o section .text
+                                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8
+_piloter_Clignotement_HDLX1             000082af   defined in Debug\fonctions_tp_utiles.o section .text
+_piloter_Clignotement_HDLX2             000082d4   defined in Debug\fonctions_tp_utiles.o section .text
+c_x                                     00000000   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)xreg.o section .ubsct
+                                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8
+c_y                                     00000003   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\libm0.sm8)yreg.o section .ubsct
+                                                   used in C:\Program Files (x86)\COSMIC\CXSTM8_EVAL\Lib\crtsi0.sm8
+f_NonHandledInterrupt                   0000855e   defined in Debug\stm8_interrupt_vector.o section .text
