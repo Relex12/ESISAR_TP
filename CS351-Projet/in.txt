@@ -1,0 +1,24 @@
+ADD $9,$9,$5
+ADDI $10,$0,5
+BGTZ $145,45
+BLEZ $5,15
+BNE $5,$5,54
+DIV $10,$50
+J $5
+JAL R0
+JR $5
+LUI $5,$5
+LW $54,4(R0)
+MFHI $5
+MFLO $5
+MULT $10,$78
+NOP
+OR $5,$4,$6
+ROTR $8,$5,$4
+SLL $5,$5,$5
+SLT $5,$5,$5
+SRL $4,$4,$4
+SUB $5,$5,$5
+SW $54,45($5)
+SYSCALL
+XOR $5,$5,$4
